@@ -9,8 +9,11 @@ UI có 2 thành phần chính đó là **view cha (view group)** và các **view
   - Sau đó nó sẽ thiết lập các liên kết, rồi chuyển thông tin kích cỡ và lời nhắn thông qua **MeasureSpec** đến các đứa con của mình (thông tin này sẽ được **view con** nhận tại method **onMeasure** của nó):
   
       + **MeasureSpec.EXACTLY**: điều này nghĩa là chúng ta đã xác định cứng kích thước trong xml, như kiểu layout_width=300dp.
+      
       + **MeasureSpec.AT_MOST**: không nên vượt quá giới hạn này.
-      + **MeasureSpec.UNSPECIFIED**: cho bạn thỏa sức.
+      
+      + **MeasureSpec.UNSPECIFIED**: cho bạn thỏa sức.
+      
 Sau khi **view con** tính toán xong việc nó cần kích thước như thế nào cần gọi method: **setMeasuredDimension(width, height)** để xác nhận. **View cha (View group)** sẽ nhận được thông tin và tiếp tục tính toán các view con khác.
 
 ### onLayout()
@@ -25,3 +28,10 @@ Method **onDraw()** được gọi rất nhiều lần để update view vì v�
 
 #### Bài viết gốc tại:
 https://kipalog.com/posts/Android--Hieu-sau-hon-ve-CustomView-va-Huong-dan-xay-dung-thu-vien-UI-IndicatorView
+
+#### Link tham khảo:
+1. https://developer.android.com/training/custom-views/index.html
+2. https://medium.com/dualcores-studio/make-an-android-custom-view-publish-and-open-source-99a3d86df228
+3. https://academy.realm.io/posts/360andev-huyen-tue-dao-measure-layout-draw-repeat-custom-views-and-viewgroups-android/
+4. https://hackernoon.com/android-draw-a-custom-view-ef79fe2ff54b
+
