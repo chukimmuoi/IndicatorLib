@@ -32,4 +32,6 @@ https://kipalog.com/posts/Android--Hieu-sau-hon-ve-CustomView-va-Huong-dan-xay-d
 #### Link tham khảo:
 1. https://developer.android.com/training/custom-views/index.html
 2. https://medium.com/dualcores-studio/make-an-android-custom-view-publish-and-open-source-99a3d86df228
+3. https://academy.realm.io/posts/360andev-huyen-tue-dao-measure-layout-draw-repeat-custom-views-and-viewgroups-android/
+4. https://hackernoon.com/android-draw-a-custom-view-ef79fe2ff54b
 
