@@ -25,3 +25,8 @@ Method **onDraw()** được gọi rất nhiều lần để update view vì v�
 
 #### Bài viết gốc tại:
 https://kipalog.com/posts/Android--Hieu-sau-hon-ve-CustomView-va-Huong-dan-xay-dung-thu-vien-UI-IndicatorView
+
+#### Link tham khảo:
+1. https://developer.android.com/training/custom-views/index.html
+2. https://medium.com/dualcores-studio/make-an-android-custom-view-publish-and-open-source-99a3d86df228
+
