@@ -5,8 +5,7 @@ Custom view indicator libary
 ## Nhìn vào vòng đời, cần chú ý đến:
 ### onMeasure()
 UI có 2 thành phần chính đó là **view cha (view group)** và các **view con**. Để **view cha** có thể tính toán và sắp xếp **View con hợp** lý cần sử dụng đến **onMeasure**. Cụ thể:
-
-  - Khi method **onMeasure** của **view cha** được thực hiện, **view cha** sẽ tìm và coi các thông số (width & height) của tất cả các **view con** và tính toán xem đứa con đó kích thước sẽ nên như thế nào dựa trên không gian khả dụng và thông số các view con đó yêu cầu muốn có.
+  - Khi method **onMeasure** của **view cha** được thực hiện, **view cha** sẽ tìm và coi các thông số (width & height) của tất cả các **view con** và tính toán xem đứa con đó kích thước sẽ nên như thế nào dựa trên không gian khả dụng và thông số các view con đó yêu cầu muốn có.
   - Sau đó nó sẽ thiết lập các liên kết, rồi chuyển thông tin kích cỡ và lời nhắn thông qua **MeasureSpec** đến các đứa con của mình (thông tin này sẽ được **view con** nhận tại method **onMeasure** của nó):
   
       + **MeasureSpec.EXACTLY**: điều này nghĩa là chúng ta đã xác định cứng kích thước trong xml, như kiểu layout_width=300dp.
