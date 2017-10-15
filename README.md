@@ -9,8 +9,11 @@ UI có 2 thành phần chính đó là **view cha (view group)** và các **view
   - Sau đó nó sẽ thiết lập các liên kết, rồi chuyển thông tin kích cỡ và lời nhắn thông qua **MeasureSpec** đến các đứa con của mình (thông tin này sẽ được **view con** nhận tại method **onMeasure** của nó):
   
       + **MeasureSpec.EXACTLY**: điều này nghĩa là chúng ta đã xác định cứng kích thước trong xml, như kiểu layout_width=300dp.
+      
       + **MeasureSpec.AT_MOST**: không nên vượt quá giới hạn này.
+      
       + **MeasureSpec.UNSPECIFIED**: cho bạn thỏa sức.
+      
 Sau khi **view con** tính toán xong việc nó cần kích thước như thế nào cần gọi method: **setMeasuredDimension(width, height)** để xác nhận. **View cha (View group)** sẽ nhận được thông tin và tiếp tục tính toán các view con khác.
 
 ### onLayout()
