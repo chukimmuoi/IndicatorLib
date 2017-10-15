@@ -29,7 +29,7 @@ interface IndicatorInterface {
     fun setRadiusUnselected(radius: Int)
 
     /**
-     * @param radius: radius in pixel
+     * @param distance: distance in pixel
      * */
     fun setDistanceDot(distance: Int)
 }
