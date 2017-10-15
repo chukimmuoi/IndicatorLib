@@ -22,3 +22,6 @@ Sử dụng **Canvas** & **Paint** để vẽ và tô màu.
 Method **onDraw()** được gọi rất nhiều lần để update view vì vậy không nên khởi tạo object mới ở đây, chỉ nên dùng lại các object đã được khai báo trước đó.
 
 Để thức hiện **onDraw()** ta dùng **invalidate()**.
+
+#### Bài viết gốc tại:
+https://kipalog.com/posts/Android--Hieu-sau-hon-ve-CustomView-va-Huong-dan-xay-dung-thu-vien-UI-IndicatorView
