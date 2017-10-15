@@ -19,7 +19,7 @@ class Dot {
 
     private var mCenter = PointF()
 
-    private var mCurrentRadius: Float = 0.0F
+    private var mCurrentRadius: Int = 0
 
     init {
         mPaint.isAntiAlias = true
@@ -38,14 +38,14 @@ class Dot {
     }
 
     fun draw(canvas: Canvas) {
-        canvas.drawCircle(mCenter.x, mCenter.y, mCurrentRadius, mPaint)
+        canvas.drawCircle(mCenter.x, mCenter.y, mCurrentRadius.toFloat(), mPaint)
     }
 
-    fun setCurrentRadius(radius: Float) {
+    fun setCurrentRadius(radius: Int) {
         mCurrentRadius = radius
     }
 
-    fun getCurrentRadius(): Float {
+    fun getCurrentRadius(): Int {
         return mCurrentRadius
     }
 }

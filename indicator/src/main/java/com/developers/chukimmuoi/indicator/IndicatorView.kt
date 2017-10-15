@@ -24,10 +24,10 @@ class IndicatorView : View, IndicatorInterface, ViewPager.OnPageChangeListener {
     private val DEFAULT_RADIUS_UNSELECTED = 15
     private val DEFAULT_DISTANCE = 40
 
-    private val DEFAULT_ANIMATE_DURATION = 200
+    private val DEFAULT_ANIMATE_DURATION = 200L
 
-    private var mRadiusSelected: Float = DEFAULT_RADIUS_SELECTED as Float
-    private var mRadiusUnselected: Float = DEFAULT_RADIUS_UNSELECTED as Float
+    private var mRadiusSelected = DEFAULT_RADIUS_SELECTED
+    private var mRadiusUnselected = DEFAULT_RADIUS_UNSELECTED
 
     private var mColorSelected = 0
     private var mColorUnselected = 0
@@ -42,7 +42,7 @@ class IndicatorView : View, IndicatorInterface, ViewPager.OnPageChangeListener {
 
     private var mBeforePosition = 0
 
-    private var mAnimateDuration = DEFAULT_ANIMATE_DURATION as Long
+    private var mAnimateDuration = DEFAULT_ANIMATE_DURATION
 
     private lateinit var mAnimatorZoomIn: ValueAnimator
     private lateinit var mAnimatorZoomOut: ValueAnimator
@@ -52,9 +52,9 @@ class IndicatorView : View, IndicatorInterface, ViewPager.OnPageChangeListener {
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         var typeArray = context.obtainStyledAttributes(attrs, R.styleable.IndicatorView)
 
-        this.mRadiusSelected = typeArray.getDimensionPixelSize(R.styleable.IndicatorView_indicator_radius_selected, DEFAULT_RADIUS_SELECTED) as Float
+        this.mRadiusSelected = typeArray.getDimensionPixelSize(R.styleable.IndicatorView_indicator_radius_selected, DEFAULT_RADIUS_SELECTED)
 
-        this.mRadiusUnselected = typeArray.getDimensionPixelSize(R.styleable.IndicatorView_indicator_color_unselected, DEFAULT_RADIUS_UNSELECTED) as Float
+        this.mRadiusUnselected = typeArray.getDimensionPixelSize(R.styleable.IndicatorView_indicator_color_unselected, DEFAULT_RADIUS_UNSELECTED)
 
         this.mColorSelected = typeArray.getColor(R.styleable.IndicatorView_indicator_color_selected, Color.WHITE)
 
@@ -72,7 +72,7 @@ class IndicatorView : View, IndicatorInterface, ViewPager.OnPageChangeListener {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        var desiredHeight = 2 * mRadiusSelected as Int
+        var desiredHeight = 2 * mRadiusSelected
 
         var widthMode = MeasureSpec.getMode(widthMeasureSpec)
         var heightMode = MeasureSpec.getMode(heightMeasureSpec)
@@ -105,17 +105,17 @@ class IndicatorView : View, IndicatorInterface, ViewPager.OnPageChangeListener {
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         super.onLayout(changed, left, top, right, bottom)
 
-        var yCenter = height / 2 as Float
+        var yCenter = (height / 2).toFloat()
 
         var d = mDistance + 2 * mRadiusUnselected
 
-        var firstXCenter = (width / 2) - ((mDots.size - 1) * d / 2)
+        var firstXCenter = ((width / 2) - ((mDots.size - 1) * d / 2)).toFloat()
 
         for (i in 0 until mDots.size) {
             mDots[i].setCenter(if (i == 0) firstXCenter else (firstXCenter + d * i), yCenter)
             mDots[i].setCurrentRadius(if (i == mCurrentPosition) mRadiusSelected else mRadiusUnselected)
             mDots[i].setColor(if (i == mCurrentPosition) mColorSelected else mColorUnselected)
-            mDots[i].setAlpha(if (i == mCurrentPosition) 255 else (mRadiusUnselected * 255 / mRadiusSelected) as Int)
+            mDots[i].setAlpha(if (i == mCurrentPosition) 255 else mRadiusUnselected * 255 / mRadiusSelected)
         }
     }
 
@@ -154,10 +154,11 @@ class IndicatorView : View, IndicatorInterface, ViewPager.OnPageChangeListener {
     override fun setDistanceDot(distance: Int) {
     }
 
-    private fun changeNewRadius(positionPerform: Int, newRadius: Float) {
-        if (mDots[positionPerform].getCurrentRadius() != newRadius) {
-            mDots[positionPerform].setCurrentRadius(newRadius)
-            mDots[positionPerform].setAlpha((newRadius * 255 / mRadiusSelected) as Int)
+    private fun changeNewRadius(positionPerform: Int, newRadius: Int) {
+        val dot = mDots[positionPerform]
+        if (dot.getCurrentRadius() != newRadius) {
+            dot.setCurrentRadius(newRadius)
+            dot.setAlpha(newRadius * 255 / mRadiusSelected)
 
             invalidate()
         }
@@ -183,20 +184,20 @@ class IndicatorView : View, IndicatorInterface, ViewPager.OnPageChangeListener {
         var animatorSet = AnimatorSet()
         animatorSet.duration = mAnimateDuration
 
-        mAnimatorZoomIn = ValueAnimator.ofFloat(mRadiusUnselected, mRadiusSelected)
+        mAnimatorZoomIn = ValueAnimator.ofInt(mRadiusUnselected, mRadiusSelected)
         mAnimatorZoomIn.addUpdateListener { animation ->
             var positionPerform = mCurrentPosition
             run {
-                val newRadius = animation.animatedValue as Float
+                val newRadius = animation.animatedValue as Int
                 changeNewRadius(positionPerform, newRadius)
             }
         }
 
-        mAnimatorZoomOut = ValueAnimator.ofFloat(mRadiusSelected, mRadiusUnselected)
+        mAnimatorZoomOut = ValueAnimator.ofInt(mRadiusSelected, mRadiusUnselected)
         mAnimatorZoomOut.addUpdateListener { animation ->
             var positionPerform = mBeforePosition
             run {
-                val newRadius = animation.animatedValue as Float
+                val newRadius = animation.animatedValue as Int
                 changeNewRadius(positionPerform, newRadius)
             }
         }
