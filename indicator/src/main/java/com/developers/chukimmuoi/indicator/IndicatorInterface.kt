@@ -18,9 +18,18 @@ interface IndicatorInterface {
 
     fun setAnimateDuration(duration: Long)
 
+    /**
+     * @param radius: radius in pixel
+     * */
     fun setRadiusSelected(radius: Int)
 
+    /**
+     * @param radius: radius in pixel
+     * */
     fun setRadiusUnselected(radius: Int)
 
+    /**
+     * @param radius: radius in pixel
+     * */
     fun setDistanceDot(distance: Int)
 }

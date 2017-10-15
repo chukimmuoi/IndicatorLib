@@ -47,8 +47,17 @@ class IndicatorView : View, IndicatorInterface, ViewPager.OnPageChangeListener {
     private lateinit var mAnimatorZoomIn: ValueAnimator
     private lateinit var mAnimatorZoomOut: ValueAnimator
 
+    /**
+     * Được dùng khi add view lúc runtime (đang chạy).
+     * @param context
+     * */
     constructor(context: Context?) : super(context)
 
+    /**
+     * Được dùng khi khai báo view trong file layout xml.
+     * @param context
+     * @param attrs custom tuỳ chọn, cho phép chỉnh sửa từ file layout xml (attrs.xml).
+     * */
     constructor(context: Context,
                 attrs: AttributeSet) : super(context, attrs) {
         var typeArray = context.obtainStyledAttributes(attrs, R.styleable.IndicatorView)
@@ -76,23 +85,43 @@ class IndicatorView : View, IndicatorInterface, ViewPager.OnPageChangeListener {
         typeArray.recycle()
     }
 
+    /**
+     * Được dùng khi khai báo view trong file layout xml.
+     * @param context
+     * @param attrs custom tuỳ chọn, cho phép chỉnh sửa từ file layout xml (attrs.xml).
+     * @param defStyleAttr huộc tính style của theme mặc định.
+     * */
     constructor(context: Context?,
                 attrs: AttributeSet?,
                 defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
+    /**
+     * Được dùng khi khai báo view trong file layout xml.
+     * @param context
+     * @param attrs custom tuỳ chọn, cho phép chỉnh sửa từ file layout xml (attrs.xml).
+     * @param defStyleAttr thuộc tính style của theme mặc định.
+     * @param defStyleRes truyền style riêng thông qua resource.
+     * */
     constructor(context: Context?,
                 attrs: AttributeSet?,
                 defStyleAttr: Int,
                 defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes)
 
+    /**
+     * Đo lường. Tính toán kích thước hiển thị cho view.
+     * Dựa vào nội dung muốn hiển thị mà bạn sẽ tính ra bạn cần tối thiểu bao nhiêu không gian để bạn hiển thị.
+     * EXACTLY:     Chính xác bằng.
+     * AT_MOST:     Tối đa.
+     * UNSPECIFIED: Sao cũng được.
+     */
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
         var desiredHeight = 2 * mRadiusSelected
 
-        var widthMode = MeasureSpec.getMode(widthMeasureSpec)
+        var widthMode  = MeasureSpec.getMode(widthMeasureSpec)
         var heightMode = MeasureSpec.getMode(heightMeasureSpec)
-        var widthSize = MeasureSpec.getSize(widthMeasureSpec)
+        var widthSize  = MeasureSpec.getSize(widthMeasureSpec)
         var heightSize = MeasureSpec.getSize(heightMeasureSpec)
 
         var width = when (widthMode) {
@@ -118,6 +147,10 @@ class IndicatorView : View, IndicatorInterface, ViewPager.OnPageChangeListener {
         setMeasuredDimension(width, height)
     }
 
+    /**
+     * Thiết lập toạ độ và kích thước cho các thành phần trong view.
+     * Ở đây là: toạ độ tâm, bán kính, màu và alpha.
+     * */
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         super.onLayout(changed, left, top, right, bottom)
 
@@ -143,6 +176,9 @@ class IndicatorView : View, IndicatorInterface, ViewPager.OnPageChangeListener {
         }
     }
 
+    /**
+     * Dựa và canvas để vẽ và paint để tô màu.
+     * */
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
