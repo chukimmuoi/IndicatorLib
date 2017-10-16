@@ -27,11 +27,14 @@ Method **onDraw()** được gọi rất nhiều lần để update view vì v�
 Để thức hiện **onDraw()** ta dùng **invalidate()**.
 
 #### Bài viết gốc tại:
-https://kipalog.com/posts/Android--Hieu-sau-hon-ve-CustomView-va-Huong-dan-xay-dung-thu-vien-UI-IndicatorView
+1. https://academy.realm.io/posts/360andev-huyen-tue-dao-measure-layout-draw-repeat-custom-views-and-viewgroups-android/ 
+2. https://www.youtube.com/watch?v=4NNmMO8Aykw&feature=youtu.be (Video)
+3. https://hackernoon.com/android-draw-a-custom-view-ef79fe2ff54b (Tiếng Anh)
+4. https://kipalog.com/posts/Android--Hieu-sau-hon-ve-CustomView-va-Huong-dan-xay-dung-thu-vien-UI-IndicatorView (Tiếng Việt)
 
 #### Link tham khảo:
-1. https://developer.android.com/training/custom-views/index.html
-2. https://medium.com/dualcores-studio/make-an-android-custom-view-publish-and-open-source-99a3d86df228
-3. https://academy.realm.io/posts/360andev-huyen-tue-dao-measure-layout-draw-repeat-custom-views-and-viewgroups-android/
-4. https://hackernoon.com/android-draw-a-custom-view-ef79fe2ff54b
+1. https://developer.android.com/training/custom-views/index.html (Trang chủ google)
+2. https://medium.com/dualcores-studio/make-an-android-custom-view-publish-and-open-source-99a3d86df228 (Của anh tầu - progress)
+3. http://eitguide.net/canvas-trong-android-phan-1/ (Canvas 1)
+4. http://eitguide.net/canvas-trong-android-phan-2-nang-cao/ (Canvas 2)
 
