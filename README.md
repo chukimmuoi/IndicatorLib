@@ -1,7 +1,7 @@
 # IndicatorLib
 Custom view indicator libary
 # View lifecyle
-![alt text](https://i.imgur.com/A6wI9Ld.png)
+![alt text](https://cdn-images-1.medium.com/max/1600/1*abc0UlGj1myFD0eph4pZjQ.png)
 ## Nhìn vào vòng đời, cần chú ý đến:
 ### onMeasure()
 UI có 2 thành phần chính đó là **view cha (view group)** và các **view con**. Để **view cha** có thể tính toán và sắp xếp **View con hợp** lý cần sử dụng đến **onMeasure**. Cụ thể:
