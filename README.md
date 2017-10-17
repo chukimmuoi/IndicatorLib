@@ -79,7 +79,40 @@ Method **onDraw()** được gọi rất nhiều lần để update view vì v�
 #### 1. Canvas
 
 #### 2. Paint
+#### 2.1. Constructor
+- Constructor không đối số:
+```Kotlin
+var mPaint = Paint()
+```
 
+- Constructor có đối số:
+```Kotlin
+var mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+```
+
+#### 2.2. Method
+##### 2.2.1. setColor(int color)
+Tuỳ biến màu sắc.
+##### 2.2.2. setAlpha(int a)
+Tuỳ biến alpha (độ trong), giá trị của a trong khoảng [0, 255] trong đó a = 0 (trong suốt), a = 255 (không có alpha).
+##### 2.2.3. setStrokeWidth(float width)
+Tuỳ biến độ rộng.
+##### 2.2.4. setStyle(Style style)
+Tuỳ biến style. Có 3 lựa chọn:
+- **Paint.Style.FILL**: Tô đối tượng. Ví dụ: tô hình tròn, hình vuông, ... ==> Diện tích.
+- **Paint.Style.STROKE**: Vẽ đối tượng, không tô. ==> chu vi.
+- **Paint.Style.FILL_AND_STROKE**: Vừa vẽ vừa tô.
+##### 2.2.5. setStrokeCap(Cap cap)
+Tuỳ biến style của nét vẽ ở điểm bắt đầu và kết thúc. Có 2 lựa chọn:
+
+- **Cap.ROUND**: Bo tròn.
+- **Cap.SQUARE**: Bình thường, nét thẳng.
+##### 2.2.6. setTypeface(Typeface typeface)
+Sử dụng trong trường hợp vẽ text. Tuỳ biến kiểu chữ.
+##### 2.2.7. setTextSize(float textSize
+Sử dụng trong trường hợp vẽ text. Tuỳ biến cỡ chữ.
+
+#### Update view:
 Để thức hiện cập nhật **view** ta dùng **invalidate()** hoặc **requestLayout()**:
 
 - **invalidate()**: chỉ gọi lại **onDraw()** để cập nhật **màu sắc**, **text**, ...
