@@ -6,9 +6,49 @@ Custom view indicator libary
 ### I. Constructor()
 - **AttributeSet** giúp **view custom** dễ sử dụng và thiết lập.
 
-- Tạo file **attrs.xml** trong folder values chứa tất cả các thuộc tính có thể set được cho **view** (cho phép tùy chỉnh ở layout.xml)
+- Tạo file **attrs.xml** trong folder values chứa tất cả các thuộc tính có thể set được cho **view** (cho phép tùy chỉnh ở layout.xml). Ví dụ:
+
+```Xml
+<resources>
+    <declare-styleable name="IndicatorView">
+        <attr name="indicator_radius_selected" format="dimension"></attr>
+        <attr name="indicator_radius_unselected" format="dimension"></attr>
+
+        <attr name="indicator_color_selected" format="color"></attr>
+        <attr name="indicator_color_unselected" format="color"></attr>
+        
+        <attr name="indicator_distance" format="dimension"></attr>
+    </declare-styleable>
+</resources>
+```
 
 - Sau đó trong **constructor** khai báo sử dụng tất cả các thuộc tính thiết lập trong **attrs.xml**. Nên sử dụng giá trị mặc định trong trường hợp thuộc tính không được sử dụng.
+
+```Kotlin
+var typeArray = context.obtainStyledAttributes(attrs, R.styleable.IndicatorView)
+
+        this.mRadiusSelected = typeArray.getDimensionPixelSize(
+                R.styleable.IndicatorView_indicator_radius_selected,
+                DEFAULT_RADIUS_SELECTED)
+
+        this.mRadiusUnselected = typeArray.getDimensionPixelSize(
+                R.styleable.IndicatorView_indicator_color_unselected,
+                DEFAULT_RADIUS_UNSELECTED)
+
+        this.mColorSelected = typeArray.getColor(
+                R.styleable.IndicatorView_indicator_color_selected,
+                Color.WHITE)
+
+        this.mColorUnselected = typeArray.getColor(
+                R.styleable.IndicatorView_indicator_color_unselected,
+                Color.WHITE)
+
+        this.mDistance = typeArray.getInt(
+                R.styleable.IndicatorView_indicator_distance,
+                DEFAULT_DISTANCE)
+
+        typeArray.recycle()
+```
 
 ### II. onAttachedToWindow()
 - **onAttachedToWindow** được gọi khi **view group (view cha)** gọi **addView(View)**
