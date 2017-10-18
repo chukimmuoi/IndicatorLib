@@ -77,7 +77,85 @@ Sử dụng **Canvas** & **Paint** để vẽ và tô màu.
 Method **onDraw()** được gọi rất nhiều lần để update view vì vậy không nên khởi tạo object mới ở đây, chỉ nên dùng lại các object đã được khai báo trước đó.
 
 #### 1. Canvas
+#### 1.1. Draw point
+```Java
+// Vẽ một điểm ở toạ độ (x, y) sử dụng object paint.
+drawPoint(float x, float y, @NonNull Paint paint)
 
+// Vẽ danh sách các điểm trong mảng pts sử dụng object paint.
+drawPoints(@Size(multiple = 2) @NonNull float[] pts, @NonNull Paint paint)
+
+// Vẽ danh sách các điểm trong mảng pts với vị trí bắt đầu offset và số điểm tính từ vị trí bắt đầu count sử dụng object paint.
+drawPoints(@Size(multiple = 2) float[] pts, int offset, int count, @NonNull Paint paint)
+
+@Size(multiple = 2) hiểu là 2 item ghép thành 1 cặp. Vd: [x0, y0], [x1, y1]
+```
+
+#### 1.2. Draw line
+```Java
+// Vẽ một đường thẳng bằng toạ độ của 2 điểm.
+drawLine(float startX, float startY, float stopX, float stopY, @NonNull Paint paint)
+
+// Vẽ nhiều đường thẳng theo 4 cặp toạ độ trong mảng pts.
+drawLines(@Size(multiple = 4) @NonNull float[] pts, int offset, int count, @NonNull Paint paint)
+
+// Vẽ nhiều tất cả đường thẳng trong mảng pts
+drawLines(@Size(multiple = 4) @NonNull float[] pts, @NonNull Paint paint)
+```
+
+#### 1.3. Draw rect
+```Java
+// Vẽ hình chữ nhật với rect là float.
+drawRect(@NonNull RectF rect, @NonNull Paint paint) // RectF(float left, float top, float right, float bottom)
+
+// Vẽ hình chữ nhật với rect là int.
+drawRect(@NonNull Rect r, @NonNull Paint paint)     // Rect(int left, int top, int right, int bottom)
+
+// Vẽ hình chữ nhật với toạ độ có sẵn từ 4 góc. (Nên dùng chiều dài và chiều rộng để tính được toạ độ)
+drawRect(float left, float top, float right, float bottom, @NonNull Paint paint)
+```
+#### 1.4. Draw circle
+```Java
+// Vẽ hình tròn chỉ cần toạ độ tâm và bán kính.
+drawCircle(float cx, float cy, float radius, @NonNull Paint paint)
+```
+#### 1.5. Draw ovals
+```Java
+// Vẽ hình bầu dục dựa vào hình chữ nhật
+drawOval(@NonNull RectF oval, @NonNull Paint paint)
+
+// Vẽ hình bầu dục dựa trên 4 điểm.
+drawOval(float left, float top, float right, float bottom, @NonNull Paint paint)
+```
+#### 1.6. Draw arc
+```Java
+// Vẽ một cung. Trong đó startAngle (góc bắt đầu vẽ - độ), sweepAngle (cung vẽ - độ), useCenter (có sử dụng tâm hay không - nối nét vào tâm hình tròn)
+drawArc(@NonNull RectF oval, float startAngle, float sweepAngle, boolean useCenter, @NonNull Paint paint) 
+
+// Tương tự.
+drawArc(float left, float top, float right, float bottom, float startAngle, 
+        float sweepAngle, boolean useCenter, @NonNull Paint paint)
+```
+#### 1.7. Draw bitmap
+```Java
+// Vẽ bitmap từ trái sang phải, với toạ độ bắt đầu là [left, top]
+drawBitmap(@NonNull Bitmap bitmap, float left, float top, @Nullable Paint paint)
+
+drawBitmap(@NonNull Bitmap bitmap, @Nullable Rect src, @NonNull RectF dst, @Nullable Paint paint)
+
+drawBitmap(@NonNull Bitmap bitmap, @Nullable Rect src, @NonNull Rect dst, @Nullable Paint paint)
+
+@Deprecated
+drawBitmap(@NonNull int[] colors, int offset, int stride, float x, float y,
+           int width, int height, boolean hasAlpha, @Nullable Paint paint) 
+           
+@Deprecated
+drawBitmap(@NonNull int[] colors, int offset, int stride, int x, int y,
+           int width, int height, boolean hasAlpha, @Nullable Paint paint)
+           
+drawBitmap(@NonNull Bitmap bitmap, @NonNull Matrix matrix, @Nullable Paint paint)
+```
+#### 1.8. Draw text
 #### 2. Paint
 #### 2.1. Constructor
 - Constructor không đối số:
@@ -85,7 +163,7 @@ Method **onDraw()** được gọi rất nhiều lần để update view vì v�
 var mPaint = Paint()
 ```
 
-- Constructor có đối số:
+- Constructor có đối số (nên ):
 ```Kotlin
 var mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 ```
