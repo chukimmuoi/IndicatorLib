@@ -156,6 +156,19 @@ drawBitmap(@NonNull int[] colors, int offset, int stride, int x, int y,
 drawBitmap(@NonNull Bitmap bitmap, @NonNull Matrix matrix, @Nullable Paint paint)
 ```
 #### 1.8. Draw text
+```Java
+// Vẽ mảng char bắt đầu từ vị trí index đến index + count.
+drawText(@NonNull char[] text, int index, int count, float x, float y, @NonNull Paint paint)
+
+// Vẽ charSequence ở vị trí bắt đầu (start) đến vị trí kết thúc (end).
+drawText(@NonNull CharSequence text, int start, int end, float x, float y, @NonNull Paint paint)
+
+// Vẽ string text ở vị trí [x, y].
+drawText(@NonNull String text, float x, float y, @NonNull Paint paint)
+
+// Vẽ string text hoặc string nằm trong text, start: vị trí chữ bắt đầu, end: vị trí chữ kết thúc. 
+drawText(@NonNull String text, int start, int end, float x, float y, @NonNull Paint paint)
+```
 #### 2. Paint
 #### 2.1. Constructor
 - Constructor không đối số:
