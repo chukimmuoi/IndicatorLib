@@ -141,6 +141,8 @@ drawArc(float left, float top, float right, float bottom, float startAngle,
 // Vẽ bitmap từ trái sang phải, với toạ độ bắt đầu là [left, top]
 drawBitmap(@NonNull Bitmap bitmap, float left, float top, @Nullable Paint paint)
 
+// Vẽ bitmap trong đó src: là hình chữ nhật cắt 1 phần của bitmap, chỉ vẽ 1 phần đó, trường hợp vẽ full bitmap sử src = null.
+                      dst: hình chữ nhật mô tả tọa độ để vẽ lên canvas.
 drawBitmap(@NonNull Bitmap bitmap, @Nullable Rect src, @NonNull RectF dst, @Nullable Paint paint)
 
 drawBitmap(@NonNull Bitmap bitmap, @Nullable Rect src, @NonNull Rect dst, @Nullable Paint paint)
