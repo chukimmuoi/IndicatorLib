@@ -49,6 +49,7 @@ var typeArray = context.obtainStyledAttributes(attrs, R.styleable.IndicatorView)
 
         typeArray.recycle()
 ```
+- LƯU Ý: Nhớ gọi **typeArray.recycle()** ở cuối method.
 
 ### II. onAttachedToWindow()
 - **onAttachedToWindow** được gọi khi **view group (view cha)** gọi **addView(View)**
@@ -67,6 +68,8 @@ UI có 2 thành phần chính đó là **view cha (view group)** và các **view
       + **MeasureSpec.UNSPECIFIED**: cho bạn thỏa sức.
       
 Sau khi **view con** tính toán xong việc nó cần kích thước như thế nào cần gọi method: **setMeasuredDimension(width, height)** để xác nhận. **View cha (View group)** sẽ nhận được thông tin và tiếp tục tính toán các view con khác.
+
+- LƯU Ý: nên sử dụng method **resolveSize(int size, int measureSpec) để xác định thoả thuận size với view group.
 
 ### IV. onLayout()
 Đã xác định xong kích thước. Có thể gọi các method **getWidth()** & **getHeight()** để lấy giá trị.
